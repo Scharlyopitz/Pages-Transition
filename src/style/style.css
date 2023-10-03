@@ -30,6 +30,11 @@ section {
   height: 100vh;
 }
 
+@media (max-width: 768px) {
+  .container h1 {
+    font-size: 15vw !important;
+  }
+}
 header {
   z-index: 1;
   position: absolute;
