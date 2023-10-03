@@ -80,6 +80,10 @@ export default function Nav({ base, burgerActive, setBurgerActive }) {
                                     data-id={idx}
                                     animate={{
                                         y: data === idx ? "-100%" : 0,
+                                        transition: {
+                                            ease: [0.65, 0, 0.35, 1],
+                                            duration: 0.5,
+                                        },
                                     }}
                                 >
                                     {nav.name}
@@ -88,6 +92,10 @@ export default function Nav({ base, burgerActive, setBurgerActive }) {
                                     data-id={idx}
                                     animate={{
                                         y: data === idx ? "-100%" : 0,
+                                        transition: {
+                                            ease: [0.65, 0, 0.35, 1],
+                                            duration: 0.5,
+                                        },
                                     }}
                                 >
                                     {nav.name}
