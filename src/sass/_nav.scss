@@ -37,15 +37,10 @@ header {
         margin-top: 10px;
         color: #000000;
 
-        &:hover {
-            & p {
-                animation: translateP 0.5s forwards;
-            }
-        }
-
-        @keyframes translateP {
-            100% {
+        p {
+            &.activeLink {
                 transform: translateY(-100%);
+                transition: 0.5s ease;
             }
         }
     }

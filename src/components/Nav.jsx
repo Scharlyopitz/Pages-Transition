@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
 
-import { delay, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function Nav({ base, burgerActive, setBurgerActive }) {
     const Navs = [
@@ -19,6 +19,12 @@ export default function Nav({ base, burgerActive, setBurgerActive }) {
             to: "contact",
         },
     ];
+
+    const [data, setdata] = useState();
+
+    const handleMouseEnter = (e) => {
+        setdata(parseInt(e.target.dataset.id));
+    };
 
     const initialPath = `M0 0 Q ${window.innerWidth / 2} 200 ${
         window.innerWidth
@@ -55,6 +61,7 @@ export default function Nav({ base, burgerActive, setBurgerActive }) {
                             <NavLink
                                 onClick={() => setBurgerActive(false)}
                                 to={`${base}${nav.to}`}
+                                onMouseEnter={(e) => handleMouseEnter(e, idx)}
                                 key={idx}
                             >
                                 <motion.div
@@ -62,6 +69,7 @@ export default function Nav({ base, burgerActive, setBurgerActive }) {
                                     animate={{
                                         y: 0,
                                         transition: {
+                                            duration: 0.5,
                                             delay: 0.6,
                                             ease: [0.65, 0, 0.35, 1],
                                         },
@@ -73,8 +81,22 @@ export default function Nav({ base, burgerActive, setBurgerActive }) {
                                         },
                                     }}
                                 >
-                                    <motion.p>{nav.name}</motion.p>
-                                    <motion.p>{nav.name}</motion.p>
+                                    <motion.p
+                                        data-id={idx}
+                                        animate={{
+                                            y: data === idx ? "-100%" : 0,
+                                        }}
+                                    >
+                                        {nav.name}
+                                    </motion.p>
+                                    <motion.p
+                                        data-id={idx}
+                                        animate={{
+                                            y: data === idx ? "-100%" : 0,
+                                        }}
+                                    >
+                                        {nav.name}
+                                    </motion.p>
                                 </motion.div>
                             </NavLink>
                         ))}

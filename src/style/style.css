@@ -66,13 +66,9 @@ header a {
   margin-top: 10px;
   color: #000000;
 }
-header a:hover p {
-  animation: translateP 0.5s forwards;
-}
-@keyframes translateP {
-  100% {
-    transform: translateY(-100%);
-  }
+header a p.activeLink {
+  transform: translateY(-100%);
+  transition: 0.5s ease;
 }
 header svg {
   position: absolute;
